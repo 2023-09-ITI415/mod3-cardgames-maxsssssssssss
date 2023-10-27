@@ -106,16 +106,19 @@ public class Prospector : MonoBehaviour
             cp.SetSortingLayerName(tSD.layerName);
             tableau.Add(cp);
 
-            foreach (CardProspector tCP in tableau)
-            {
-                foreach (int hid in tCP.slotDef.hiddenBy)
-                {
-                    cp = FindCardByLayoutID(hid);
-                    tCP.hiddenBy.Add(cp);
-                }
-            }
+            
 
         }
+
+        foreach (CardProspector tCP in tableau)
+        {
+            foreach (int hid in tCP.slotDef.hiddenBy)
+            {
+                cp = FindCardByLayoutID(hid);
+                tCP.hiddenBy.Add(cp);
+            }
+        }
+
 
         // Set up the initial target card
         MoveToTarget(Draw());
@@ -299,7 +302,7 @@ public class Prospector : MonoBehaviour
             FloatingScoreHandler(eScoreEvent.gameLoss);
         }
         // Reload the scene, resetting the game
-        SceneManager.LoadScene("__Prospector_Scene_0");
+        SceneManager.LoadScene("__Prospector");
     }
 
 
